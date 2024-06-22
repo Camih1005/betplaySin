@@ -23,5 +23,9 @@ public class Coach extends Person {
     public void setIdFederacion(int idFederacion) {
         this.idFederacion = idFederacion;
     }
-    
+    @Override
+    public String toString() {
+        return "Coach{ nombre='" + getNombre() + "', apellido='" + getApellido() + "', edad=" + getEdad() + ", idFederacion=" + idFederacion + '}';
+    }
+   
 }
