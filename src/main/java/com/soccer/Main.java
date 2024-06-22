@@ -1,15 +1,52 @@
 package com.soccer;
 
+import java.util.Scanner;
+import com.soccer.view.viewCoach;
 import com.soccer.view.viewTeam;
 
 public class Main {
+
     public static void main(String[] args) {
-        Controller ctrlTeams = new Controller();
-        viewTeam.controlador = ctrlTeams;
-        viewTeam vt = new viewTeam();
-        vt.start();
+        Scanner scanner = new Scanner(System.in);
+        viewTeam viewTeam = new viewTeam();
+        viewCoach viewCoach = new viewCoach();
 
+        while (true) {
+            System.out.println("1. Coach");
+            System.out.println("2. Team");
+            System.out.println("3. Player");
+            System.out.println("4. Salir");
+            System.out.println("Ingrese una opción:");
 
-       // System.out.println("Jugador"+ eq.getLstJugadores().get(0).getNombre());
+            if (scanner.hasNextInt()) {
+                int choice = scanner.nextInt();
+                scanner.nextLine(); // Consumir la nueva línea después de nextInt()
+
+                switch (choice) {
+                    case 1:
+                        System.out.println("Seleccionaste Coach");
+                        viewCoach.start();
+                        break;
+                    case 2:
+                        System.out.println("Seleccionaste Team");
+                        viewTeam.start();
+                        break;
+                    case 3:
+                        System.out.println("Seleccionaste Player");
+                        break;
+                    case 4:
+                        System.out.println("¡Nos vemos!");
+                        scanner.close(); // Cerrar el scanner antes de salir
+                        System.exit(0);
+                        break;
+                    default:
+                        System.out.println("Opción inválida, intenta de nuevo.");
+                        break;
+                }
+            } else {
+                scanner.nextLine(); // Consumir la entrada inválida
+                System.out.println("Por favor ingresa un número válido.");
+            }
+        }
     }
 }
