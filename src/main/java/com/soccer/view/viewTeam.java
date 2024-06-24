@@ -3,14 +3,14 @@ package com.soccer.view;
 
 import java.util.Scanner;
 import com.soccer.Controller;
+import com.soccer.model.entity.Coach;
 import com.soccer.model.entity.Team;
 
 
 public class viewTeam {
-    public static Controller controlador;
+    public Controller controlador;
     public void start() {
         Scanner scanner = new Scanner(System.in);
-
 
 
         while (true) {
@@ -19,27 +19,63 @@ public class viewTeam {
             System.out.println("3. Buscar Equipo");
             System.out.println("4. Eliminar Equipo");
             System.out.println("5. Listar todos Equipos");
-            System.out.println("6. Salir\n\n=========================================================");
+            System.out.println("6. Salir del sistema");
+            System.out.println("7. Salir al menu principal\n\n=========================================================");
             
 
-            if (scanner.hasNextInt()) {
+            if (scanner.hasNextInt() ) {
                 int choice = scanner.nextInt();
             scanner.nextLine();
             
             Team equipo = new Team();
+            //por defecto esta este equipo
+            equipo.setNombre("Atletico");
+            equipo.setCiudad("Bucaramanga");
+            controlador.equipos.put("09", equipo);
+
             switch (choice) {
-                
                 case 1:
-                        
-                        String codigoEquipo = null;
-                        System.out.println("Ingrese el codigo del equipo :");
-                        codigoEquipo = scanner.nextLine();
-                        System.out.println("Ingrese Nombre del equipo :");
-                        equipo.setNombre(scanner.nextLine());
-                        System.out.println("Ingrese la ciudad :");
-                        equipo.setCiudad(scanner.nextLine());
-                        controlador.equipos.put(codigoEquipo, equipo);
-                    break;
+                String codigoEquipo = null; 
+    System.out.println("Ingrese el codigo del equipo:");
+    codigoEquipo = scanner.nextLine();
+    
+    // Verificar si el equipo ya existe
+    if (controlador.equipos.containsKey(codigoEquipo)) {
+        System.out.println("El código de equipo ya está en uso. Intente con otro código.");
+        break;
+    }
+
+    equipo = new Team();
+    equipo.setNombre("Atletico"); // Ejemplo de valor por defecto
+    equipo.setCiudad("Bucaramanga"); // Ejemplo de valor por defecto
+
+    try {
+        System.out.println("Ingrese Nombre del equipo:");
+        equipo.setNombre(scanner.nextLine());
+        
+        System.out.println("Ingrese la ciudad:");
+        equipo.setCiudad(scanner.nextLine());
+        
+        System.out.println("Ingrese el código del entrenador para este equipo:");
+        String codigoCoach = scanner.nextLine();
+        
+        // Verificar si el entrenador existe
+        Coach coach = controlador.coach.get(codigoCoach);
+        if (coach != null) {
+            equipo.setLstEntrenadores(coach);
+            System.out.println("Entrenador asignado al equipo: " + equipo.getLstEntrenadores());
+            
+        } else {
+            System.out.println("Entrenador no encontrado.");
+        }
+        
+        
+        
+    } catch (Exception e) {
+        System.out.println("Error al ingresar datos: " + e.getMessage());
+    }
+    
+    break;
 
                 case 2:
 
@@ -85,11 +121,10 @@ public class viewTeam {
                     break;
 
                 case 5:
-                System.out.println("Lista de todos los equipos:");
                    System.out.println("Listado de todos los Equipos:");
                     for (String key : controlador.equipos.keySet()) {
                     Team equipos = controlador.equipos.get(key);
-                    System.out.println("Código: " + key + " Nombre: " + equipos.getNombre() + " ciudad :"+ equipos.getCiudad());
+                    System.out.println("Código: " + key + " Nombre: " + equipos.getNombre() + " ciudad :"+ equipos.getCiudad() + " tecnico: " + equipos.getLstEntrenadores());
                     }
                     break;
 
@@ -98,6 +133,10 @@ public class viewTeam {
                     scanner.close();
                     System.exit(0);
                     break;
+
+                    case 7:
+                    System.out.println("Ingresando al menu principal\n");
+                    return;
 
                 default:
                

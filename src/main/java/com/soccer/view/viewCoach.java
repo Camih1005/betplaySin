@@ -7,25 +7,35 @@ import com.soccer.model.entity.Coach;
 import com.soccer.model.entity.Team;
 
 
+
 public class viewCoach {
-public static Controller controlador = new Controller();
+public Controller controlador = new Controller();
 public void start(){
     Scanner scanner = new Scanner(System.in);
-
+    Coach coach = new Coach();
+    coach.setNombre("Camilo");
+            coach.setApellido("Hernandez");
+            coach.setEdad(23);
+            coach.setId(1);
+            coach.setIdFederacion(2);
+            controlador.coach.put("01", coach);
     while (true) {
-        System.out.println("1. Crear Coach");
+        System.out.println("\n1. Crear Coach");
             System.out.println("2. Actualizar Coach");
             System.out.println("3. Buscar Coach");
             System.out.println("4. Eliminar Coach");
             System.out.println("5. Listar todos los Coach");
-            System.out.println("6. Salir\n\n=========================================================");
+            System.out.println("6. Salir al menu principal\n\n");
+
+            System.out.println("Opcion:");
 
             int choice = scanner.nextInt();
-            Coach coach = new Coach();
+            Team team = new Team();
+            
             scanner.nextLine();
             switch (choice) {
                 case 1:
-                String codigoCoach = null;
+                String codigoCoach;
                 System.out.println("Ingrese el codigo del coach :");
                 codigoCoach = scanner.nextLine();
                 System.out.println("Ingrese Nombre del coach :");
@@ -37,6 +47,7 @@ public void start(){
                 System.out.println("Ingrese idFederacion del coach :");
                 coach.setIdFederacion(scanner.nextInt());
                 controlador.coach.put(codigoCoach, coach);
+
 
                     break;
 
@@ -91,6 +102,10 @@ public void start(){
                     System.out.println("Código: " + key + " Nombre: " + coach.getNombre() + " Apellido :"+ coach.getApellido());
                     }
                     break;
+                    case 6:
+
+                    System.out.println("Elegiste el numero 6\n\nMenu Principal");
+                   return;
 
                 default:
                     System.out.println("pailas");

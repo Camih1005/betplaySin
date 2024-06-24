@@ -10,13 +10,16 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         viewTeam viewTeam = new viewTeam();
         viewCoach viewCoach = new viewCoach();
+        Controller refcontrolador = new Controller();
+        viewTeam.controlador = refcontrolador;
+        viewCoach.controlador = refcontrolador;
 
         while (true) {
             System.out.println("1. Coach");
             System.out.println("2. Team");
             System.out.println("3. Player");
             System.out.println("4. Salir");
-            System.out.println("Ingrese una opción:");
+            System.out.println("\nIngrese una opción:\n");
 
             if (scanner.hasNextInt()) {
                 int choice = scanner.nextInt();
