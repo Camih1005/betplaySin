@@ -29,9 +29,9 @@ public class viewTeam {
             
             Team equipo = new Team();
             //por defecto esta este equipo
-            equipo.setNombre("Atletico");
-            equipo.setCiudad("Bucaramanga");
-            controlador.equipos.put("09", equipo);
+            // equipo.setNombre("Atletico");
+            // equipo.setCiudad("Bucaramanga");
+            // controlador.equipos.put("09", equipo);
 
             switch (choice) {
                 case 1:
@@ -45,9 +45,8 @@ public class viewTeam {
         break;
     }
 
-    equipo = new Team();
-    equipo.setNombre("Atletico"); // Ejemplo de valor por defecto
-    equipo.setCiudad("Bucaramanga"); // Ejemplo de valor por defecto
+
+   
 
     try {
         System.out.println("Ingrese Nombre del equipo:");
@@ -59,11 +58,11 @@ public class viewTeam {
         System.out.println("Ingrese el código del entrenador para este equipo:");
         String codigoCoach = scanner.nextLine();
         
-        // Verificar si el entrenador existe
         Coach coach = controlador.coach.get(codigoCoach);
         if (coach != null) {
             equipo.setLstEntrenadores(coach);
-            System.out.println("Entrenador asignado al equipo: " + equipo.getLstEntrenadores());
+            controlador.equipos.put(codigoCoach, equipo);
+            System.out.println("Entrenador asignado al equipo: " + equipo);
             
         } else {
             System.out.println("Entrenador no encontrado.");
@@ -122,10 +121,13 @@ public class viewTeam {
 
                 case 5:
                    System.out.println("Listado de todos los Equipos:");
-                    for (String key : controlador.equipos.keySet()) {
+                   for (String key : controlador.equipos.keySet()) {
                     Team equipos = controlador.equipos.get(key);
-                    System.out.println("Código: " + key + " Nombre: " + equipos.getNombre() + " ciudad :"+ equipos.getCiudad() + " tecnico: " + equipos.getLstEntrenadores());
+                    System.out.println("Código equipo: " + key + " Nombre: " + equipos.getNombre() + " ciudad :"+ equipos.getCiudad() + " tecnico: " + equipos.getLstEntrenadores());
                     }
+                    
+                   
+                
                     break;
 
                 case 6:

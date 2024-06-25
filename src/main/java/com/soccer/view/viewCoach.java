@@ -13,12 +13,7 @@ public Controller controlador = new Controller();
 public void start(){
     Scanner scanner = new Scanner(System.in);
     Coach coach = new Coach();
-    coach.setNombre("Camilo");
-            coach.setApellido("Hernandez");
-            coach.setEdad(23);
-            coach.setId(1);
-            coach.setIdFederacion(2);
-            controlador.coach.put("01", coach);
+          
     while (true) {
         System.out.println("\n1. Crear Coach");
             System.out.println("2. Actualizar Coach");

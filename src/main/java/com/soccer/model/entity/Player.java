@@ -3,10 +3,19 @@ package com.soccer.model.entity;
 public class Player extends Person {
     private int dorsal;
     private String posicion;
+    private int setEdad;
     public Player() {
         super();
     }
-    public Player(int dorsal, String posicion) {
+    public int getSetEdad() {
+		return setEdad;
+		
+	}
+	public void setSetEdad(int setEdad) {
+		this.setEdad = setEdad;
+		
+	}
+	public Player(int dorsal, String posicion) {
         this.dorsal = dorsal;
         this.posicion = posicion;
     }
@@ -21,6 +30,7 @@ public class Player extends Person {
     public void setDorsal(int dorsal) {
         this.dorsal = dorsal;
     }
+    
     public String getPosicion() {
         return posicion;
     }
@@ -28,6 +38,9 @@ public class Player extends Person {
         this.posicion = posicion;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Player [dorsal=" + dorsal + ", posicion=" + posicion + "]";
+    }
     
 }

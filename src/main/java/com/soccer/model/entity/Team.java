@@ -48,6 +48,6 @@ public class Team {
 
     @Override
     public String toString() {
-        return "Team{nombre='" + nombre + "', ciudad='" + ciudad + "', jugadores=" + lstJugadores + ", entrenadores=" + lstEntrenadores + "}";
+        return "Teamnombre='" + nombre + "', ciudad='" + ciudad + "', jugadores=" + lstJugadores + ", entrenadores=" + lstEntrenadores + "}";
     }
 }

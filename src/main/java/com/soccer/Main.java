@@ -2,6 +2,7 @@ package com.soccer;
 
 import java.util.Scanner;
 import com.soccer.view.viewCoach;
+import com.soccer.view.viewPlayer;
 import com.soccer.view.viewTeam;
 
 public class Main {
@@ -10,9 +11,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         viewTeam viewTeam = new viewTeam();
         viewCoach viewCoach = new viewCoach();
-        Controller refcontrolador = new Controller();
-        viewTeam.controlador = refcontrolador;
-        viewCoach.controlador = refcontrolador;
+        viewPlayer viewPlayer = new viewPlayer();
+      
+
+
 
         while (true) {
             System.out.println("1. Coach");
@@ -23,7 +25,7 @@ public class Main {
 
             if (scanner.hasNextInt()) {
                 int choice = scanner.nextInt();
-                scanner.nextLine(); // Consumir la nueva línea después de nextInt()
+                scanner.nextLine();
 
                 switch (choice) {
                     case 1:
@@ -36,6 +38,7 @@ public class Main {
                         break;
                     case 3:
                         System.out.println("Seleccionaste Player");
+                        viewPlayer.start();
                         break;
                     case 4:
                         System.out.println("¡Nos vemos!");
