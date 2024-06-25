@@ -37,7 +37,7 @@ public class Main {
                         viewTeam.start();
                         break;
                     case 3:
-                        System.out.println("Seleccionaste Player");
+                        System.out.println("Seleccionaste Player\n");
                         viewPlayer.start();
                         break;
                     case 4:

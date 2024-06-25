@@ -37,10 +37,12 @@ public class Player extends Person {
     public void setPosicion(String posicion) {
         this.posicion = posicion;
     }
-
     @Override
     public String toString() {
-        return "Player [dorsal=" + dorsal + ", posicion=" + posicion + "]";
+        return "Player [dorsal=" + dorsal + ", posicion=" + posicion + ", getNombre()=" + getNombre()
+                + ", getApellido()=" + getApellido() + ", getEdad()=" + getEdad() + "]";
     }
+
+   
     
 }
