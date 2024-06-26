@@ -9,8 +9,8 @@ import com.soccer.model.entity.Team;
 
 
 public class viewCoach {
-public Controller controlador = new Controller();
-public void start(){
+
+public void start(Controller controlador){
     Scanner scanner = new Scanner(System.in);
     Coach coach = new Coach();
           
@@ -42,6 +42,7 @@ public void start(){
                 System.out.println("Ingrese idFederacion del coach :");
                 coach.setIdFederacion(scanner.nextInt());
                 controlador.coach.put(codigoCoach, coach);
+                
 
 
                     break;
@@ -62,7 +63,7 @@ public void start(){
                         controlador.coach.put(codigoCoach, coach);
                         System.out.println("coach actualizado: " + coach);
                     } else {
-                        System.out.println("Equipo no encontrado.");
+                        System.out.println("Coach no encontrado.");
                     }
                     break;
                     case 3:

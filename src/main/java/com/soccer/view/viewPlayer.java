@@ -9,11 +9,12 @@ import com.soccer.model.entity.Team;
 public class viewPlayer {
     public static Controller controlador;
     Player jugador = new Player();
+    
 
     public void start() {
         Scanner scanner = new Scanner(System.in);
         String codigoJugador = null;
-
+        controlador = new Controller();
         while (true) {
             System.out.println("1. Agregar jugador");
             System.out.println("2. Informacion del jugador");
@@ -29,8 +30,10 @@ public class viewPlayer {
 
                 switch (choice) {
                     case 1:
+                    
                         System.out.println("Ingrese el codigo del jugador:");
                         codigoJugador = scanner.nextLine();
+                        
 
                         if (controlador.player.containsKey(codigoJugador)) {
                             System.out.println("El código de jugador ya está en uso. Intente con otro código.");
@@ -76,8 +79,7 @@ public class viewPlayer {
                         break;
 
                     case 2:
-                        // Llamar al método actualizar
-                        actualizar(scanner);
+                       
                         break;
 
                     case 3:
@@ -134,7 +136,7 @@ public class viewPlayer {
         System.out.println("4. Actualizar Dorsal");
         System.out.println("5. Actualizar Posicion");
         int choice = scanner.nextInt();
-        scanner.nextLine(); // Consumir la nueva línea después de nextInt()
+        scanner.nextLine();
 
         System.out.println("Ingrese el codigo del jugador a actualizar:");
         String codigoJugador = scanner.nextLine();
@@ -162,14 +164,14 @@ public class viewPlayer {
             case 3:
                 System.out.println("Ingrese la edad a actualizar");
                 jugador.setEdad(scanner.nextInt());
-                scanner.nextLine(); // Consumir la nueva línea después de nextInt()
+                scanner.nextLine();
                 System.out.println("Edad actualizada");
                 break;
 
             case 4:
                 System.out.println("Ingrese el dorsal a actualizar");
                 jugador.setDorsal(scanner.nextInt());
-                scanner.nextLine(); // Consumir la nueva línea después de nextInt()
+                scanner.nextLine(); 
                 System.out.println("Dorsal actualizado");
                 break;
 

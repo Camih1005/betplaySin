@@ -6,13 +6,14 @@ import com.soccer.view.viewPlayer;
 import com.soccer.view.viewTeam;
 
 public class Main {
-
+    public static Controller controlador;
+   
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         viewTeam viewTeam = new viewTeam();
         viewCoach viewCoach = new viewCoach();
         viewPlayer viewPlayer = new viewPlayer();
-      
+        controlador = new Controller();
 
 
 
@@ -30,11 +31,11 @@ public class Main {
                 switch (choice) {
                     case 1:
                         System.out.println("Seleccionaste Coach");
-                        viewCoach.start();
+                        viewCoach.start(controlador);
                         break;
                     case 2:
                         System.out.println("Seleccionaste Team");
-                        viewTeam.start();
+                        viewTeam.start(controlador);
                         break;
                     case 3:
                         System.out.println("Seleccionaste Player\n");

@@ -8,8 +8,9 @@ import com.soccer.model.entity.Team;
 
 
 public class viewTeam {
-    public Controller controlador;
-    public void start() {
+
+    public void start(Controller controlador) {
+       
         Scanner scanner = new Scanner(System.in);
 
 
@@ -58,14 +59,14 @@ public class viewTeam {
         System.out.println("Ingrese el código del entrenador para este equipo:");
         String codigoCoach = scanner.nextLine();
         
-        Coach coach = controlador.coach.get(codigoCoach);
-        if (coach != null) {
+        if (controlador.coach.containsKey(codigoCoach)) {
+            Coach coach = controlador.coach.get(codigoCoach);
             equipo.setLstEntrenadores(coach);
             controlador.equipos.put(codigoCoach, equipo);
             System.out.println("Entrenador asignado al equipo: " + equipo);
             
         } else {
-            System.out.println("Entrenador no encontrado.");
+            System.out.println("Entrenador no encontrado." + controlador.getCoach() + equipo.getLstEntrenadores());
         }
         
         
